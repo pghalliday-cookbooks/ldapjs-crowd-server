@@ -17,7 +17,8 @@ service_user = 'ldapjs-crowd-server'
 service_group = 'ldapjs-crowd-server'
 install_path = '/opt/ldapjs-crowd-server'
 service_name = 'ldapjs-crowd-server'
-logfile = '/var/log/ldapjs-crowd-server.log'
+log_path = '/var/log/ldapjs-crowd-server'
+logfile = File.join log_path, 'server.log'
 service_conf = '/etc/init/ldapjs-crowd-server.conf'
 logrotate_conf = '/etc/logrotate.d/ldapjs-crowd-server'
 config = File.join install_path, 'config.json'
@@ -32,6 +33,11 @@ user service_group do
 end
 
 directory install_path do
+  owner service_user
+  recursive true
+end
+
+directory log_path do
   owner service_user
   recursive true
 end
