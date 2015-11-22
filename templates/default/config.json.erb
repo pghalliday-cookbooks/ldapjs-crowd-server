@@ -1,0 +1,23 @@
+{
+  <% unless @system_certificate_bundle.nil? %>
+  "ssl": {
+    "certificateBundle": "<%= @system_certificate_bundle %>"
+  },
+  <% end %>
+  "crowd": {
+    <% unless @crowd_root_certificate.nil? %>
+    "sslRootCertificate": "<%= @crowd_root_certificate %>",
+    <% end %>
+    "url": "<%= @crowd_url %>",
+    "applicationName": "<%= @application_name %>",
+    "applicationPassword": "<%= @application_password %>"
+  },
+  "ldap": {
+    "uid": "<%= @uid %>",
+    "dnSuffix": "<%= @dn_suffix %>",
+    "bindDn": "<%= @bind_dn %>",
+    "bindPassword": "<%= @bind_password %>",
+    "searchBase": "<%= @search_base %>",
+    "port": <%= @port %>
+  }
+}

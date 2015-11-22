@@ -1,0 +1,15 @@
+description "LDAP proxy for Atlassian Crowd authentication"
+author "Peter Halliday"
+
+setuid <%= @user %>
+setgid <%= @group %>
+
+chdir <%= @install_path %>
+
+start on runlevel [2345]
+stop on shutdown
+
+script
+    echo "[`date`] ldapjs-crowd-server starting"
+    exec node_modules/.bin/coffee index.coffee <%= @config %> >> <%= @logfile %>
+end script

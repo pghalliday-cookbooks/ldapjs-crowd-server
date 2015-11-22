@@ -1,0 +1,12 @@
+<%= @logfile %>
+{
+  rotate 7
+  daily
+  missingok
+  notifempty
+  delaycompress
+  compress
+  postrotate
+    restart <%= @service %> >/dev/null 2>&1 || true
+  endscript
+}
