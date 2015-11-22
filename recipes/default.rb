@@ -51,7 +51,7 @@ git install_path do
 end
 
 bash 'npm_install' do
-  user login_user
+  user service_user
   cwd install_path
   code <<-EOH.gsub(/^ {4}/, '')
     rm -rf node_modules
