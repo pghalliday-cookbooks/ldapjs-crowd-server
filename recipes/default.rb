@@ -16,7 +16,6 @@ port = node['ldapjs_crowd_server']['port']
 service_user = 'ldapjs-crowd-server'
 service_group = 'ldapjs-crowd-server'
 install_path = '/opt/ldapjs-crowd-server'
-log_path = '/var/log/ldapjs-crowd-server'
 service_name = 'ldapjs-crowd-server'
 logfile = '/var/log/ldapjs-crowd-server.log'
 service_conf = '/etc/init/ldapjs-crowd-server.conf'
@@ -33,11 +32,6 @@ user service_group do
 end
 
 directory install_path do
-  owner service_user
-  recursive true
-end
-
-directory log_path do
   owner service_user
   recursive true
 end
