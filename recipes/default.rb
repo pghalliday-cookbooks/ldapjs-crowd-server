@@ -43,7 +43,7 @@ directory log_path do
 end
 
 git install_path do
-  user login_user
+  user service_user
   repository repository
   revision version
   notifies :run, "bash[npm_install]", :immediately
