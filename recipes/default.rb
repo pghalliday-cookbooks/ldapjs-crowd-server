@@ -22,6 +22,7 @@ logfile = File.join log_path, 'server.log'
 service_conf = '/etc/init/ldapjs-crowd-server.conf'
 logrotate_conf = '/etc/logrotate.d/ldapjs-crowd-server'
 config = File.join install_path, 'config.json'
+crowd_root_certificate_path = nil
 
 group service_group do
   system true
@@ -70,12 +71,19 @@ template service_conf do
   notifies :restart, "service[#{service_name}]", :delayed
 end
 
+unless crowd_root_certificate.nil?
+  crowd_root_certificate_path = File.join install_path, 'crowd_root_certificate'
+  file crowd_root_certificate_path do
+    content crowd_root_certificate
+  end
+end
+
 template config do
   owner service_user
   group service_group
   variables(
     system_certificate_bundle: system_certificate_bundle,
-    crowd_root_certificate: crowd_root_certificate,
+    crowd_root_certificate: crowd_root_certificate_path,
     crowd_url: crowd_url,
     application_name: application_name,
     application_password: application_password,
