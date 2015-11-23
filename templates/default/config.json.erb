@@ -6,7 +6,7 @@
   <% end %>
   "crowd": {
     <% unless @crowd_root_certificate.nil? %>
-    "sslRootCertificate": "<%= @crowd_root_certificate.to_json %>",
+    "sslRootCertificate": <%= @crowd_root_certificate.to_json %>,
     <% end %>
     "url": "<%= @crowd_url %>",
     "applicationName": "<%= @application_name %>",
