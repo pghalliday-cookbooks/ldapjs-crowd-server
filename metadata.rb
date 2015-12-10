@@ -1,3 +1,6 @@
 name 'ldapjs_crowd_server'
 version '0.1.0'
+description 'Deploy a ldapjs-crowd-server service'
+source_url 'https://github.com/pghalliday-cookbooks/ldapjs-crowd-server'
+issues_url 'https://github.com/pghalliday-cookbooks/ldapjs-crowd-server/issues'
 supports 'ubuntu'

@@ -11,5 +11,5 @@ stop on shutdown
 
 script
     echo "[`date`] ldapjs-crowd-server starting"
-    exec node_modules/.bin/coffee index.coffee <%= @config %> >> <%= @logfile %>
+    exec node_modules/.bin/coffee index.coffee <%= @config %> >> <%= @logfile %> 2>&1
 end script
